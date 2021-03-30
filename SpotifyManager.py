@@ -4,6 +4,12 @@ from spotipy.oauth2 import SpotifyOAuth
 
 def setup_client():
     """Setups and returns the Spotipy client object"""
+
+    # Method uses environment variables:
+    # SPOTIPY_CLIENT_ID
+    # SPOTIPY_CLIENT_SECRET
+    # SPOTIPY_REDIRECT_URI
+
     scope = "playlist-read-private playlist-modify-private"
     am = SpotifyOAuth(
         scope=scope,
