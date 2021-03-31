@@ -24,7 +24,7 @@ class SpotifyManager:
     def __init__(self, date):
         self.client = setup_client()
         self.date = date
-        self.playlist_name = f"{date} - Billboard Top100"
+        self.playlist_name = f"Billboard Top100"
 
     def get_user_id(self):
         """Used to return the current user ID"""
@@ -71,3 +71,4 @@ class SpotifyManager:
             playlist_id=pl_id,
             items=tracks
         )
+        return playlist
