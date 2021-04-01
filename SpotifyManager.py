@@ -13,7 +13,7 @@ def setup_client():
     scope = "playlist-read-private playlist-modify-private"
     am = SpotifyOAuth(
         scope=scope,
-        show_dialog=True
+        open_browser=False
     )
 
     return spotipy.Spotify(auth_manager=am)
