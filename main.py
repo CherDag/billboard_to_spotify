@@ -19,7 +19,8 @@ response.raise_for_status()
 
 # Uses Beautiful Soup to scrap song title from the HTML page and compile them as a list
 soup = BeautifulSoup(response.text, "html.parser")
-song_title_tags = soup.find_all(name="span", class_="chart-element__information__song")
+# song_title_tags = soup.find_all(name="span", class_="chart-element__information__song")
+song_title_tags = soup.find_all(name="h3", class_="a-font-primary-bold-s")
 songs = [tag.getText() for tag in song_title_tags]
 
 # Initialises the custom class SpotifyManager with the date (see description in the class itself)
@@ -32,7 +33,6 @@ users = um.get_users()
 # Uses list comprehension to make a list of song URIs ("if" statement checks if the element in the list exists -
 # method get_song_uri car return None if there is no such song on Spotify)
 track_URIs = [sm.get_song_uri(song) for song in songs if sm.get_song_uri(song)]
-
 # Creates the playlist with songs from previous step
 playlist = sm.create_playlist(tracks=track_URIs)
 
